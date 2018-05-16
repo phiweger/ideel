@@ -13,7 +13,9 @@ You will need a Diamond index like UniProt TREMBL.
 
 ### run
 
-Clone the repo.  Make a directory called "genomes", put assemblies in there with .fa file extension
+Clone the repo. 
+
+The output of the workflow will be written to `--directory`. In there, make a directory called "genomes", put assemblies in there with .fa file extension
 
 Edit the `config.json` file, specifying e.g. the path to the Diamond database.
 
