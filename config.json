@@ -1,0 +1,4 @@
+{
+	"db": "/path/to/diamond/database/eg/uniprot_trembl.dmnd",
+	"threads": 4
+}
