@@ -1,18 +1,19 @@
 import sys
 import os
 
-thisdir = os.path.abspath(os.path.dirname(__file__))
-print(thisdir)
 
 shell.executable('/bin/bash')
 t = config['threads']
+print('Looking for database in:', config['db'])
+print('Looking for genomes in:', os.getcwd() + 'genomes/')
 
 
 IDS, = glob_wildcards('genomes/{id}.fa')
 
 if len(IDS) == 0:
-    print('No genomes found -- is the path in the config correct?')
+    print('No genomes found -- is the path to the genomes/file.fa correct?')
     sys.exit(1)
+
 
 rule all: 
     input: expand('hists/{sample}.pdf', sample=IDS)
@@ -20,13 +21,13 @@ rule all:
     
 rule prodigal:
     input: 'genomes/{id}.fa'
-    output: 'proteins/{id}.faa'
+    output: temp('proteins/{id}.faa')
     shell: 'prodigal -a {output} -q -i {input}'
 
 
 rule diamond:
     input: 'proteins/{id}.faa'
-    output: 'lengths/{id}.data'
+    output: temp('lengths/{id}.data')
     threads: t
     params:
         db = config['db'],
