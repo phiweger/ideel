@@ -25,6 +25,10 @@ data <- read.table(filein, header=FALSE, sep='\t')
 names(data) <- c('qlen', 'slen')
 
 
+pseudogenes <- sum(data$qlen / data$slen < 0.9)
+print(paste0('Encountered genes < 0.9 reference length: ', pseudogenes))
+
+
 theme_min = function (
     size=10, font=NA, face='plain', 
     panelColor=backgroundColor, axisColor='#999999', 

@@ -11,7 +11,9 @@ print('Looking for genomes in:', os.getcwd() + 'genomes/')
 IDS, = glob_wildcards('genomes/{id}.fa')
 
 if len(IDS) == 0:
-    print('No genomes found -- is the path to the genomes/file.fa correct?')
+    print('No genomes found.') 
+    print('Is the path to the genomes/file.fa correct?')
+    print('Is the file extension .fa instead of .fasta?')
     sys.exit(1)
 
 
